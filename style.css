@@ -1,0 +1,113 @@
+:root {
+    --color-primary: #1c3f64fe;
+    --color-primary-light: #d3b899;
+    --color-dark: rgb(0, 0, 0);
+    --color-gray: rgba(0, 0, 0, 0.5);
+    --color-active: #b18757;
+    --color-shadow: #112741;
+}
+* {
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    user-select: none;
+}
+.container {
+    width: 80%;
+    margin: auto;
+}
+.title {
+    text-align: center;
+    font-size: 3rem;
+    text-transform: capitalize;
+    margin: 2rem 0;
+    color: var(--color-primary);
+}
+.calculator {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 6rem repeat(4, 1fr);
+    gap: 1rem;
+    width: 450px;
+    height: 400px;
+    margin: auto;
+    padding: 1rem;
+    background-color: var(--color-primary);
+    box-shadow: 5px 5px 2px var(--color-shadow);
+    border-radius: 1rem;
+}
+.calculator > *:not(.answer) {
+    background: var(--color-primary-light);
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    box-shadow: 5px 5px 2px var(--color-shadow);
+}
+.calculator > *:not(.answer):hover,
+.calculator > .active {
+    cursor: pointer;
+    background: var(--color-active);
+    box-shadow: 0 0 0;
+}
+.answer {
+    grid-column: 1/-1;
+    display: grid;
+    align-items: center;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1;
+    background-color: var(--color-primary-light);
+    padding: 0.5rem;
+    font-size: 2rem;
+    text-align: right;
+    border-radius: 0.5rem;
+    box-shadow: inset 1px 3px 2px 3px var(--color-shadow);
+}
+.cal {
+    color: var(--color-gray);
+    font-size: 1.5rem;
+    overflow-x: auto;
+}
+.result {
+    overflow-x: auto;
+}
+.result::-webkit-scrollbar,
+.cal::-webkit-scrollbar {
+    height: 5px;
+}
+.result::-webkit-scrollbar-thumb,
+.cal::-webkit-scrollbar-thumb {
+    background-color: var(--color-gray);
+}
+.result::-webkit-scrollbar-thumb:hover,
+.cal::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-primary);
+}
+div[data-operator="clear"] {
+    grid-row: 2/3;
+    grid-column: 4/5;
+}
+div[data-operator="delete"] {
+    grid-row: 2/3;
+    grid-column: 5/-1;
+}
+div[data-operator="+"] {
+    grid-row: 3/4;
+    grid-column: 4/5;
+}
+div[data-operator="-"] {
+    grid-row: 3/4;
+    grid-column: 5/-1;
+}
+div[data-operator="*"] {
+    grid-row: 4/5;
+    grid-column: 4/5;
+}
+div[data-operator="/"] {
+    grid-row: 4/5;
+    grid-column: 5/-1;
+}
+div[data-operator="="] {
+    grid-row: 5/-1;
+    grid-column: 4/-1;
+}
