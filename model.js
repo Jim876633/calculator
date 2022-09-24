@@ -86,8 +86,12 @@ export const addOperator = (operator) => {
             state.number = state.result;
             break;
         default:
+            // click operator twice
             if (state.number.length === 0) {
                 state.renderCal = state.renderCal.slice(0, -1);
+                if (state.renderCal.length === 0) {
+                    state.renderCal = 0;
+                }
                 setOperator();
             } else {
                 calculate();
